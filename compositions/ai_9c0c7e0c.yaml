@@ -1,0 +1,39 @@
+name: 林间清风
+description: 山间午后，清风穿过树林，带来远处隐约的鸟鸣，营造出宁静惬意的自然氛围。
+duration: 360
+tracks:
+- audio: forest-ambience-296528.mp3
+  start: 0
+  end: 360
+  volume: 0.5
+  fade_in: 20
+  fade_out: 25
+  loop: true
+- audio: wind-blowing-457954.mp3
+  start: 10
+  end: 360
+  volume: 0.4
+  fade_in: 15
+  fade_out: 20
+  loop: true
+- audio: birds-forest-nature-445379.mp3
+  start: 30
+  end: 120
+  volume: 0.35
+  fade_in: 8
+  fade_out: 10
+  loop: false
+- audio: birdsong-in-moss-valley-24455.mp3
+  start: 150
+  end: 240
+  volume: 0.3
+  fade_in: 8
+  fade_out: 10
+  loop: false
+- audio: birds-19624.mp3
+  start: 270
+  end: 360
+  volume: 0.25
+  fade_in: 8
+  fade_out: 15
+  loop: false

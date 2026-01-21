@@ -1,0 +1,53 @@
+name: 午后林间细雨
+description: 阳光透过树叶的午后，微风轻拂，细雨呢喃，营造一个隔绝喧嚣的静谧休憩空间
+duration: 480
+tracks:
+- audio: soft-rain-ambient-111154.mp3
+  start: 0
+  end: 480
+  volume: 0.35
+  fade_in: 25
+  fade_out: 30
+  loop: true
+- audio: wind-blowing-457954.mp3
+  start: 15
+  end: 480
+  volume: 0.25
+  fade_in: 20
+  fade_out: 25
+  loop: true
+- audio: light-rain-ambient-114354.mp3
+  start: 30
+  end: 450
+  volume: 0.4
+  fade_in: 15
+  fade_out: 20
+  loop: true
+- audio: forest-ambience-296528.mp3
+  start: 60
+  end: 420
+  volume: 0.3
+  fade_in: 12
+  fade_out: 15
+  loop: true
+- audio: birds-forest-nature-445379.mp3
+  start: 90
+  end: 150
+  volume: 0.3
+  fade_in: 5
+  fade_out: 8
+  loop: false
+- audio: melting-snow-dripping-from-trees-51118.mp3
+  start: 200
+  end: 260
+  volume: 0.25
+  fade_in: 6
+  fade_out: 10
+  loop: false
+- audio: birdsong-in-moss-valley-24455.mp3
+  start: 320
+  end: 380
+  volume: 0.28
+  fade_in: 5
+  fade_out: 8
+  loop: false

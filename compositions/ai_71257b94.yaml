@@ -1,0 +1,53 @@
+name: 林间听涛
+description: 漫步森林小径，微风拂过树梢，远处传来阵阵海浪，鸟鸣点缀其间
+duration: 480
+tracks:
+- audio: forest-ambience-296528.mp3
+  start: 0
+  end: 480
+  volume: 0.35
+  fade_in: 15
+  fade_out: 20
+  loop: true
+- audio: wind-blowing-457954.mp3
+  start: 10
+  end: 470
+  volume: 0.25
+  fade_in: 10
+  fade_out: 15
+  loop: true
+- audio: soothing-ocean-waves-372489.mp3
+  start: 30
+  end: 450
+  volume: 0.2
+  fade_in: 20
+  fade_out: 25
+  loop: true
+- audio: birds-forest-nature-445379.mp3
+  start: 60
+  end: 180
+  volume: 0.4
+  fade_in: 8
+  fade_out: 10
+  loop: false
+- audio: birdsong-in-moss-valley-24455.mp3
+  start: 240
+  end: 360
+  volume: 0.35
+  fade_in: 8
+  fade_out: 10
+  loop: false
+- audio: walking-into-forest-steps-324854.mp3
+  start: 90
+  end: 150
+  volume: 0.3
+  fade_in: 5
+  fade_out: 5
+  loop: false
+- audio: walking-into-forest-steps-324854.mp3
+  start: 300
+  end: 360
+  volume: 0.3
+  fade_in: 5
+  fade_out: 5
+  loop: false

@@ -7,6 +7,7 @@ from flask import Flask, send_from_directory, jsonify, request
 import yaml
 import os
 import threading
+import asyncio
 
 app = Flask(__name__, static_folder='static')
 
@@ -22,6 +23,9 @@ from composer import (
     load_composition,
     render_composition
 )
+
+# 导入 LLM composer 模块
+from llm_composer import generate_composition, save_composition
 
 
 @app.route('/')
@@ -257,6 +261,125 @@ def api_render_status(name):
     })
 
 
+# ==================== AI 作曲 API ====================
+
+@app.route('/ai')
+def ai_composer_page():
+    """AI 作曲页面"""
+    return send_from_directory('static', 'ai_composer.html')
+
+
+@app.route('/api/ai/compose', methods=['POST'])
+def api_ai_compose():
+    """AI 生成音效组合"""
+    data = request.get_json()
+    
+    if not data or 'scene' not in data:
+        return jsonify({
+            'success': False,
+            'error': '请提供场景描述'
+        }), 400
+    
+    scene_description = data['scene'].strip()
+    
+    if len(scene_description) < 5:
+        return jsonify({
+            'success': False,
+            'error': '场景描述太短，请提供更详细的描述'
+        }), 400
+    
+    if len(scene_description) > 1000:
+        return jsonify({
+            'success': False,
+            'error': '场景描述过长，请控制在1000字以内'
+        }), 400
+    
+    # 调用 AI 生成
+    try:
+        result = asyncio.run(generate_composition(scene_description))
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': f'生成过程出错: {str(e)}'
+        }), 500
+    
+    if not result['success']:
+        return jsonify(result), 400
+    
+    # 是否自动保存
+    auto_save = data.get('auto_save', True)
+    
+    if auto_save:
+        try:
+            save_composition(result['id'], result['composition'])
+            result['saved'] = True
+        except Exception as e:
+            result['saved'] = False
+            result['save_error'] = str(e)
+    
+    return jsonify(result)
+
+
+@app.route('/api/ai/save', methods=['POST'])
+def api_ai_save():
+    """保存 AI 生成的组合"""
+    data = request.get_json()
+    
+    if not data:
+        return jsonify({
+            'success': False,
+            'error': '无效的请求数据'
+        }), 400
+    
+    composition_id = data.get('id')
+    composition = data.get('composition')
+    
+    if not composition_id or not composition:
+        return jsonify({
+            'success': False,
+            'error': '缺少必需字段: id 或 composition'
+        }), 400
+    
+    try:
+        file_path = save_composition(composition_id, composition)
+        return jsonify({
+            'success': True,
+            'message': '保存成功',
+            'id': composition_id,
+            'path': file_path
+        })
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': f'保存失败: {str(e)}'
+        }), 500
+
+
+@app.route('/api/sounds/summary')
+def api_sounds_summary():
+    """获取音效库摘要（用于前端展示）"""
+    yaml_path = os.path.join(BASE_DIR, 'audio_descriptions.yaml')
+    
+    with open(yaml_path, 'r', encoding='utf-8') as f:
+        data = yaml.safe_load(f)
+    
+    summary = {
+        'total_files': data.get('metadata', {}).get('total_files', 0),
+        'categories': []
+    }
+    
+    for category_id, category in data.get('categories', {}).items():
+        cat_summary = {
+            'id': category_id,
+            'name_zh': category.get('name_zh', category_id),
+            'name_en': category.get('name_en', category_id),
+            'file_count': len(category.get('files', []))
+        }
+        summary['categories'].append(cat_summary)
+    
+    return jsonify(summary)
+
+
 if __name__ == '__main__':
     # 确保必要目录存在
     os.makedirs(COMPOSITIONS_DIR, exist_ok=True)
@@ -265,6 +388,7 @@ if __name__ == '__main__':
     print("\n🎵 WhiteNoise 白噪音混合播放器")
     print("=" * 40)
     print("主页:     http://localhost:5000")
+    print("AI作曲:   http://localhost:5000/ai")
     print("组合器:   http://localhost:5000/composer")
     print("按 Ctrl+C 停止服务\n")
     app.run(host='0.0.0.0', port=5000, debug=True)
