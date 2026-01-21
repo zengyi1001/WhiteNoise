@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhiteNoise · 白噪音</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="app">
+        <!-- 头部 -->
+        <header class="header">
+            <h1 class="logo">WhiteNoise</h1>
+            <p class="tagline">沉浸 · 专注 · 放松</p>
+        </header>
+
+        <!-- 分类导航 -->
+        <nav class="categories" id="categories">
+            <!-- 动态生成 -->
+        </nav>
+
+        <!-- 音效网格 -->
+        <main class="sounds-grid" id="soundsGrid">
+            <!-- 动态生成 -->
+        </main>
+
+        <!-- 混音面板 -->
+        <section class="mixer-panel" id="mixerPanel">
+            <div class="mixer-header">
+                <span class="mixer-title">正在播放</span>
+                <button class="btn-clear" id="btnClear" title="清除全部">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="mixer-tracks" id="mixerTracks">
+                <p class="empty-hint">点击上方音效卡片添加声音</p>
+            </div>
+            <div class="mixer-controls">
+                <button class="btn-play" id="btnPlay">
+                    <svg class="icon-play" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    <svg class="icon-pause" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display:none">
+                        <path d="M6 4h4v16H6zM14 4h4v16h-4z"/>
+                    </svg>
+                </button>
+                <div class="master-volume">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+                        <path d="M15.54 8.46a5 5 0 010 7.07"/>
+                        <path d="M19.07 4.93a10 10 0 010 14.14"/>
+                    </svg>
+                    <input type="range" id="masterVolume" min="0" max="100" value="80" class="slider">
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

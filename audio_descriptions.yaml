@@ -1,0 +1,657 @@
+metadata:
+  title: 白噪音音频库
+  title_en: White Noise Audio Library
+  description: 用于放松、睡眠、专注和冥想的环境音频集合
+  description_en: A collection of ambient audio for relaxation, sleep, focus, and
+    meditation
+  total_files: 66
+  source: Pixabay
+  generated_by: analyze_audio.py
+categories:
+  rain_sounds:
+    name_zh: 雨声
+    name_en: Rain Sounds
+    files:
+    - filename: calming-rain-257596.mp3
+      description_zh: 平静的雨声，轻柔舒缓
+      description_en: Calming rain sounds, gentle and soothing
+      scene: 放松、冥想、睡眠
+      duration_seconds: 108.67
+      duration_formatted: '1:48'
+      volume_level: medium
+      volume_db: -19.7
+      bitrate_kbps: 256
+    - filename: heavy-rain-114710.mp3
+      description_zh: 大雨倾盆声
+      description_en: Heavy rain sounds
+      scene: 睡眠、专注、遮盖噪音
+      duration_seconds: 899.87
+      duration_formatted: '14:59'
+      volume_level: soft
+      volume_db: -30.8
+      bitrate_kbps: 256
+    - filename: light-rain-109591.mp3
+      description_zh: 小雨淅沥声
+      description_en: Light drizzling rain
+      scene: 放松、睡眠
+      duration_seconds: 104.36
+      duration_formatted: '1:44'
+      volume_level: soft
+      volume_db: -25.9
+      bitrate_kbps: 256
+    - filename: light-rain-ambient-114354.mp3
+      description_zh: 轻柔的环境雨声
+      description_en: Light ambient rain sounds
+      scene: 阅读、学习
+      duration_seconds: 540.08
+      duration_formatted: '9:00'
+      volume_level: very_soft
+      volume_db: -38.9
+      bitrate_kbps: 256
+    - filename: rain-and-little-storm-298087.mp3
+      description_zh: 小雨伴随轻微风暴
+      description_en: Rain with light storm
+      scene: 放松、睡眠
+      duration_seconds: 243.85
+      duration_formatted: '4:03'
+      volume_level: medium
+      volume_db: -20.0
+      bitrate_kbps: 256
+    - filename: rain-in-the-city-2-water-drops-rain-2-8978.mp3
+      description_zh: 城市雨声与水滴声
+      description_en: Rain in the city with water drops
+      scene: 城市雨天氛围
+      duration_seconds: 100.85
+      duration_formatted: '1:40'
+      volume_level: soft
+      volume_db: -31.1
+      bitrate_kbps: 256
+    - filename: rainy-day-in-town-with-birds-singing-194011.mp3
+      description_zh: 小镇雨天伴随鸟鸣
+      description_en: Rainy day in town with birds singing
+      scene: 小镇雨天氛围、放松
+      duration_seconds: 581.22
+      duration_formatted: '9:41'
+      volume_level: soft
+      volume_db: -28.6
+      bitrate_kbps: 256
+    - filename: soft-rain-ambient-111154.mp3
+      description_zh: 柔和的环境雨声
+      description_en: Soft ambient rain
+      scene: 轻度放松、背景音
+      duration_seconds: 540.24
+      duration_formatted: '9:00'
+      volume_level: very_soft
+      volume_db: -36.6
+      bitrate_kbps: 256
+    - filename: sonido-de-lluvia-rain-sound-132614.mp3
+      description_zh: 雨声（西班牙语命名）
+      description_en: Rain sound (Spanish naming)
+      scene: 放松、睡眠
+      duration_seconds: 898.98
+      duration_formatted: '14:58'
+      volume_level: medium
+      volume_db: -17.5
+      bitrate_kbps: 256
+  thunderstorm:
+    name_zh: 雷雨
+    name_en: Thunderstorm
+    files:
+    - filename: dry-thunder-364468.mp3
+      description_zh: 干雷声
+      description_en: Dry thunder sounds
+      scene: 雷声效果
+      duration_seconds: 157.31
+      duration_formatted: '2:37'
+      volume_level: soft
+      volume_db: -25.3
+      bitrate_kbps: 256
+    - filename: rain-and-thunder-16705.mp3
+      description_zh: 雨声伴随雷鸣
+      description_en: Rain with thunder
+      scene: 暴风雨氛围、专注
+      duration_seconds: 726.31
+      duration_formatted: '12:06'
+      volume_level: soft
+      volume_db: -25.3
+      bitrate_kbps: 160
+    - filename: rainstorm-with-wind-351117.mp3
+      description_zh: 暴风雨伴随大风
+      description_en: Rainstorm with wind
+      scene: 暴风雨氛围、专注
+      duration_seconds: 186.75
+      duration_formatted: '3:06'
+      volume_level: medium
+      volume_db: -21.0
+      bitrate_kbps: 256
+    - filename: thunderstorm-25054.mp3
+      description_zh: 雷暴声
+      description_en: Thunderstorm sounds
+      scene: 暴风雨氛围、专注
+      duration_seconds: 1513.34
+      duration_formatted: '25:13'
+      volume_level: soft
+      volume_db: -30.1
+      bitrate_kbps: 160
+    - filename: thunderstorm-and-heavy-raining-sound-effect-448079.mp3
+      description_zh: 雷暴伴随大雨音效
+      description_en: Thunderstorm with heavy rain sound effect
+      scene: 暴风雨氛围、专注、遮盖噪音
+      duration_seconds: 15.05
+      duration_formatted: 0:15
+      volume_level: medium
+      volume_db: -16.1
+      bitrate_kbps: 256
+  nature_ambience:
+    name_zh: 自然环境
+    name_en: Nature Ambience
+    files:
+    - filename: birds-19624.mp3
+      description_zh: 鸟鸣声
+      description_en: Bird sounds
+      scene: 清晨、自然放松
+      duration_seconds: 636.31
+      duration_formatted: '10:36'
+      volume_level: very_soft
+      volume_db: -42.4
+      bitrate_kbps: 160
+    - filename: birds-forest-nature-445379.mp3
+      description_zh: 森林中的鸟鸣自然声
+      description_en: Birds in forest nature sounds
+      scene: 森林氛围、自然放松
+      duration_seconds: 109.03
+      duration_formatted: '1:49'
+      volume_level: medium
+      volume_db: -21.0
+      bitrate_kbps: 256
+    - filename: birds-near-waterfall-324855.mp3
+      description_zh: 瀑布旁的鸟鸣声
+      description_en: Birds near waterfall
+      scene: 自然探索氛围
+      duration_seconds: 63.07
+      duration_formatted: '1:03'
+      volume_level: soft
+      volume_db: -28.7
+      bitrate_kbps: 256
+    - filename: birdsong-in-moss-valley-24455.mp3
+      description_zh: 苔藓山谷中的鸟鸣
+      description_en: Birdsong in moss valley
+      scene: 山谷自然氛围
+      duration_seconds: 131.3
+      duration_formatted: '2:11'
+      volume_level: soft
+      volume_db: -34.4
+      bitrate_kbps: 160
+    - filename: crowing-rooster-164881.mp3
+      description_zh: 公鸡打鸣声
+      description_en: Crowing rooster
+      scene: 农村清晨、闹钟音效
+      duration_seconds: 20.64
+      duration_formatted: 0:20
+      volume_level: medium
+      volume_db: -17.8
+      bitrate_kbps: 256
+    - filename: forest-ambience-296528.mp3
+      description_zh: 森林环境音
+      description_en: Forest ambience
+      scene: 森林氛围、放松
+      duration_seconds: 212.98
+      duration_formatted: '3:32'
+      volume_level: medium
+      volume_db: -24.2
+      bitrate_kbps: 256
+    - filename: frogs-and-toads-in-the-field-gran-sabana-venezuela-18042.mp3
+      description_zh: 委内瑞拉大草原青蛙蟾蜍叫声
+      description_en: Frogs and toads in Gran Sabana, Venezuela
+      scene: 热带夜晚氛围、自然探索
+      duration_seconds: 279.74
+      duration_formatted: '4:39'
+      volume_level: very_soft
+      volume_db: -35.6
+      bitrate_kbps: 160
+    - filename: frogs1-26828.mp3
+      description_zh: 青蛙叫声
+      description_en: Frog sounds
+      scene: 池塘夜晚氛围
+      duration_seconds: 31.78
+      duration_formatted: 0:31
+      volume_level: soft
+      volume_db: -33.2
+      bitrate_kbps: 160
+    - filename: melting-snow-dripping-from-trees-51118.mp3
+      description_zh: 融雪从树上滴落的声音
+      description_en: Melting snow dripping from trees
+      scene: 初春氛围、放松
+      duration_seconds: 262.78
+      duration_formatted: '4:22'
+      volume_level: soft
+      volume_db: -29.3
+      bitrate_kbps: 160
+    - filename: night-ambience-17064.mp3
+      description_zh: 夜晚环境音
+      description_en: Night ambience
+      scene: 夜晚氛围、睡眠
+      duration_seconds: 180.07
+      duration_formatted: '3:00'
+      volume_level: very_soft
+      volume_db: -47.3
+      bitrate_kbps: 160
+    - filename: night-cricket-ambience-22484.mp3
+      description_zh: 夜晚蟋蟀环境音
+      description_en: Night cricket ambience
+      scene: 夏夜氛围、放松
+      duration_seconds: 82.08
+      duration_formatted: '1:22'
+      volume_level: very_soft
+      volume_db: -41.0
+      bitrate_kbps: 256
+    - filename: snow-on-umbrella-61498.mp3
+      description_zh: 雪落在雨伞上的声音
+      description_en: Snow falling on umbrella
+      scene: 冬日氛围、ASMR
+      duration_seconds: 156.46
+      duration_formatted: '2:36'
+      volume_level: very_soft
+      volume_db: -47.8
+      bitrate_kbps: 160
+    - filename: walking-into-forest-steps-324854.mp3
+      description_zh: 走进森林的脚步声
+      description_en: Walking into forest with footsteps
+      scene: 森林探索氛围、ASMR
+      duration_seconds: 63.22
+      duration_formatted: '1:03'
+      volume_level: very_soft
+      volume_db: -36.9
+      bitrate_kbps: 256
+  water_sounds:
+    name_zh: 水声
+    name_en: Water Sounds
+    files:
+    - filename: dripping-water-nature-sounds-8050.mp3
+      description_zh: 滴水的自然声音
+      description_en: Dripping water nature sounds
+      scene: 洞穴氛围、放松
+      duration_seconds: 68.49
+      duration_formatted: '1:08'
+      volume_level: very_soft
+      volume_db: -39.0
+      bitrate_kbps: 256
+    - filename: ocean-waves-112906.mp3
+      description_zh: 海浪声
+      description_en: Ocean waves
+      scene: 海边氛围、睡眠
+      duration_seconds: 24.69
+      duration_formatted: 0:24
+      volume_level: soft
+      volume_db: -28.4
+      bitrate_kbps: 256
+    - filename: relaxing-stream-ambience-for-youtube-420901.mp3
+      description_zh: 放松的溪流环境音
+      description_en: Relaxing stream ambience
+      scene: 溪流放松、冥想
+      duration_seconds: 720.02
+      duration_formatted: '12:00'
+      volume_level: soft
+      volume_db: -29.1
+      bitrate_kbps: 256
+    - filename: river-sounds-2-420905.mp3
+      description_zh: 河流声音
+      description_en: River sounds
+      scene: 河流氛围、放松
+      duration_seconds: 360.02
+      duration_formatted: '6:00'
+      volume_level: soft
+      volume_db: -27.6
+      bitrate_kbps: 256
+    - filename: soothing-ocean-waves-372489.mp3
+      description_zh: 舒缓的海浪声
+      description_en: Soothing ocean waves
+      scene: 海边放松、睡眠、冥想
+      duration_seconds: 132.08
+      duration_formatted: '2:12'
+      volume_level: soft
+      volume_db: -26.9
+      bitrate_kbps: 256
+    - filename: sounds-of-a-powerful-waterfall-sounds-of-nature-145254.mp3
+      description_zh: 强劲瀑布的自然声音
+      description_en: Sounds of a powerful waterfall
+      scene: 瀑布氛围、白噪音
+      duration_seconds: 478.48
+      duration_formatted: '7:58'
+      volume_level: medium
+      volume_db: -16.8
+      bitrate_kbps: 256
+    - filename: water-bubbles-257594.mp3
+      description_zh: 水泡声
+      description_en: Water bubbles
+      scene: 水下氛围、放松
+      duration_seconds: 34.04
+      duration_formatted: 0:34
+      volume_level: medium
+      volume_db: -20.6
+      bitrate_kbps: 256
+    - filename: water-stream-108384.mp3
+      description_zh: 溪流水声
+      description_en: Water stream sounds
+      scene: 溪流氛围、放松
+      duration_seconds: 76.54
+      duration_formatted: '1:16'
+      volume_level: very_soft
+      volume_db: -36.3
+      bitrate_kbps: 256
+    - filename: waterfall-sounds-259625.mp3
+      description_zh: 瀑布声音
+      description_en: Waterfall sounds
+      scene: 瀑布氛围、白噪音
+      duration_seconds: 82.16
+      duration_formatted: '1:22'
+      volume_level: loud
+      volume_db: -14.5
+      bitrate_kbps: 256
+    - filename: waterfalls2-19656.mp3
+      description_zh: 瀑布声音（版本2）
+      description_en: Waterfall sounds (version 2)
+      scene: 瀑布氛围、白噪音
+      duration_seconds: 666.67
+      duration_formatted: '11:06'
+      volume_level: medium
+      volume_db: -22.7
+      bitrate_kbps: 160
+    - filename: waterstream-small-30360.mp3
+      description_zh: 小溪流水声
+      description_en: Small water stream
+      scene: 小溪氛围、放松
+      duration_seconds: 49.08
+      duration_formatted: 0:49
+      volume_level: soft
+      volume_db: -34.8
+      bitrate_kbps: 256
+  fire_sounds:
+    name_zh: 火焰声
+    name_en: Fire Sounds
+    files:
+    - filename: aachen_burning-fireplace-crackling-fire-soundswav-14561.mp3
+      description_zh: 壁炉燃烧的噼啪声
+      description_en: Burning fireplace crackling fire sounds
+      scene: 温馨壁炉氛围
+      duration_seconds: 714.05
+      duration_formatted: '11:54'
+      volume_level: very_soft
+      volume_db: -50.4
+      bitrate_kbps: 160
+    - filename: fire-forest-2-377740.mp3
+      description_zh: 森林火焰声
+      description_en: Forest fire sounds
+      scene: 野外篝火氛围
+      duration_seconds: 173.04
+      duration_formatted: '2:53'
+      volume_level: soft
+      volume_db: -33.0
+      bitrate_kbps: 256
+    - filename: fire-in-the-night-forest-226199.mp3
+      description_zh: 夜间森林中的火焰声
+      description_en: Fire in the night forest
+      scene: 夜间篝火氛围
+      duration_seconds: 260.54
+      duration_formatted: '4:20'
+      volume_level: soft
+      volume_db: -32.5
+      bitrate_kbps: 256
+    - filename: fire-sound-222359.mp3
+      description_zh: 火焰声
+      description_en: Fire sound
+      scene: 火焰氛围
+      duration_seconds: 1800.28
+      duration_formatted: '30:00'
+      volume_level: very_soft
+      volume_db: -37.3
+      bitrate_kbps: 256
+    - filename: fire-sound-334130.mp3
+      description_zh: 火焰声（版本2）
+      description_en: Fire sound (version 2)
+      scene: 火焰氛围
+      duration_seconds: 44.04
+      duration_formatted: 0:44
+      volume_level: soft
+      volume_db: -32.0
+      bitrate_kbps: 256
+  urban_ambience:
+    name_zh: 城市环境
+    name_en: Urban Ambience
+    files:
+    - filename: bookstore-ambience-236734.mp3
+      description_zh: 书店环境音
+      description_en: Bookstore ambience
+      scene: 阅读、安静学习
+      duration_seconds: 295.78
+      duration_formatted: '4:55'
+      volume_level: very_soft
+      volume_db: -39.9
+      bitrate_kbps: 256
+    - filename: breakfast-sounds-59929.mp3
+      description_zh: 早餐声音
+      description_en: Breakfast sounds
+      scene: 早晨氛围、厨房
+      duration_seconds: 148.42
+      duration_formatted: '2:28'
+      volume_level: soft
+      volume_db: -34.8
+      bitrate_kbps: 160
+    - filename: busy-coffee-shop-live-acoustic-guitar-music-61678.mp3
+      description_zh: 繁忙咖啡店伴随现场吉他音乐
+      description_en: Busy coffee shop with live acoustic guitar music
+      scene: 咖啡店工作氛围
+      duration_seconds: 172.99
+      duration_formatted: '2:52'
+      volume_level: soft
+      volume_db: -26.3
+      bitrate_kbps: 160
+    - filename: city-street-downtown-52115.mp3
+      description_zh: 市中心街道声音
+      description_en: City street downtown
+      scene: 城市街道氛围
+      duration_seconds: 335.81
+      duration_formatted: '5:35'
+      volume_level: soft
+      volume_db: -28.9
+      bitrate_kbps: 160
+    - filename: coffee-shop-ambience-27829.mp3
+      description_zh: 咖啡店环境音
+      description_en: Coffee shop ambience
+      scene: 咖啡店氛围、工作
+      duration_seconds: 66.05
+      duration_formatted: '1:06'
+      volume_level: soft
+      volume_db: -33.0
+      bitrate_kbps: 160
+    - filename: coffeeshopchatter-51190.mp3
+      description_zh: 咖啡店闲聊声
+      description_en: Coffee shop chatter
+      scene: 咖啡店背景音
+      duration_seconds: 268.49
+      duration_formatted: '4:28'
+      volume_level: soft
+      volume_db: -29.6
+      bitrate_kbps: 160
+    - filename: ladies-in-prague-cafe-before-concert-recorded-from-vocal-mic-on-stage-53291.mp3
+      description_zh: 布拉格咖啡馆音乐会前的女士交谈声
+      description_en: Ladies in Prague cafe before concert
+      scene: 欧式咖啡馆氛围
+      duration_seconds: 589.42
+      duration_formatted: '9:49'
+      volume_level: soft
+      volume_db: -32.5
+      bitrate_kbps: 160
+    - filename: laundromat-ambience-23810.mp3
+      description_zh: 自助洗衣店环境音
+      description_en: Laundromat ambience
+      scene: 洗衣店氛围、白噪音
+      duration_seconds: 114.34
+      duration_formatted: '1:54'
+      volume_level: soft
+      volume_db: -33.0
+      bitrate_kbps: 160
+    - filename: library-ambiance-60000.mp3
+      description_zh: 图书馆环境音
+      description_en: Library ambiance
+      scene: 安静学习氛围
+      duration_seconds: 905.28
+      duration_formatted: '15:05'
+      volume_level: very_soft
+      volume_db: -40.8
+      bitrate_kbps: 160
+    - filename: library-cut-59130.mp3
+      description_zh: 图书馆环境音（剪辑版）
+      description_en: Library ambience (cut version)
+      scene: 安静学习氛围
+      duration_seconds: 130.09
+      duration_formatted: '2:10'
+      volume_level: soft
+      volume_db: -33.1
+      bitrate_kbps: 160
+    - filename: traffic-32180.mp3
+      description_zh: 交通声音
+      description_en: Traffic sounds
+      scene: 城市交通氛围
+      duration_seconds: 44.42
+      duration_formatted: 0:44
+      volume_level: very_soft
+      volume_db: -35.0
+      bitrate_kbps: 160
+  wind_sounds:
+    name_zh: 风声
+    name_en: Wind Sounds
+    files:
+    - filename: 013148_wind-winter-trees-gusty-cold-77mel-190120flac-58049.mp3
+      description_zh: 冬日寒风吹过树林的呼啸声
+      description_en: Winter wind through trees, gusty and cold
+      scene: 冬季氛围、寒冷感
+      duration_seconds: 114.05
+      duration_formatted: '1:54'
+      volume_level: medium
+      volume_db: -24.5
+      bitrate_kbps: 160
+    - filename: desert-wind-2-350417.mp3
+      description_zh: 沙漠风声
+      description_en: Desert wind
+      scene: 沙漠氛围
+      duration_seconds: 32.39
+      duration_formatted: 0:32
+      volume_level: soft
+      volume_db: -26.4
+      bitrate_kbps: 256
+    - filename: wind-blowing-457954.mp3
+      description_zh: 风吹声
+      description_en: Wind blowing
+      scene: 自然风声
+      duration_seconds: 42.74
+      duration_formatted: 0:42
+      volume_level: soft
+      volume_db: -32.4
+      bitrate_kbps: 256
+    - filename: wind-blowing-sfx-12809.mp3
+      description_zh: 风吹音效
+      description_en: Wind blowing sound effect
+      scene: 风声效果
+      duration_seconds: 36.44
+      duration_formatted: 0:36
+      volume_level: medium
+      volume_db: -20.5
+      bitrate_kbps: 256
+    - filename: windstorm-ambience-372486.mp3
+      description_zh: 风暴环境音
+      description_en: Windstorm ambience
+      scene: 暴风氛围
+      duration_seconds: 377.21
+      duration_formatted: '6:17'
+      volume_level: medium
+      volume_db: -21.3
+      bitrate_kbps: 256
+    - filename: winter-wind-402331.mp3
+      description_zh: 冬季风声
+      description_en: Winter wind
+      scene: 冬季氛围、寒冷感
+      duration_seconds: 19.03
+      duration_formatted: 0:19
+      volume_level: medium
+      volume_db: -18.1
+      bitrate_kbps: 256
+  meditation_spiritual:
+    name_zh: 冥想/精神
+    name_en: Meditation & Spiritual
+    files:
+    - filename: meditation-bowls-23651.mp3
+      description_zh: 冥想颂钵声
+      description_en: Meditation bowls
+      scene: 冥想、瑜伽
+      duration_seconds: 110.45
+      duration_formatted: '1:50'
+      volume_level: soft
+      volume_db: -34.7
+      bitrate_kbps: 256
+    - filename: temple-exterior-18072.mp3
+      description_zh: 寺庙外部环境音
+      description_en: Temple exterior ambience
+      scene: 寺庙氛围、冥想
+      duration_seconds: 196.06
+      duration_formatted: '3:16'
+      volume_level: soft
+      volume_db: -25.0
+      bitrate_kbps: 160
+    - filename: temple-monks-chanting02-16627.mp3
+      description_zh: 寺庙僧侣诵经声
+      description_en: Temple monks chanting
+      scene: 冥想、精神放松
+      duration_seconds: 312.58
+      duration_formatted: '5:12'
+      volume_level: soft
+      volume_db: -29.5
+      bitrate_kbps: 160
+  clock_ticking:
+    name_zh: 时钟声
+    name_en: Clock Ticking
+    files:
+    - filename: quartz-kitchen-clock-ticking-60-seconds-253100.mp3
+      description_zh: 厨房石英钟滴答声（60秒）
+      description_en: Quartz kitchen clock ticking (60 seconds)
+      scene: 时间流逝氛围、专注
+      duration_seconds: 60.08
+      duration_formatted: '1:00'
+      volume_level: very_soft
+      volume_db: -47.1
+      bitrate_kbps: 256
+    - filename: ticking-clock_1-27477.mp3
+      description_zh: 时钟滴答声
+      description_en: Ticking clock
+      scene: 安静房间氛围
+      duration_seconds: 16.38
+      duration_formatted: 0:16
+      volume_level: very_soft
+      volume_db: -43.9
+      bitrate_kbps: 256
+  miscellaneous:
+    name_zh: 其他
+    name_en: Miscellaneous
+    files:
+    - filename: destruction-of-bubble-foil-102164.mp3
+      description_zh: 气泡膜破裂声
+      description_en: Bubble wrap popping sounds
+      scene: ASMR、解压
+      duration_seconds: 10.78
+      duration_formatted: 0:10
+      volume_level: very_soft
+      volume_db: -46.6
+      bitrate_kbps: 160
+usage_guide:
+  relaxation:
+    zh: 推荐雨声、自然环境音、水声类音频
+    en: 'Recommended: rain sounds, nature ambience, water sounds'
+  sleep:
+    zh: 推荐柔和的雨声、海浪声、白噪音
+    en: 'Recommended: soft rain, ocean waves, white noise'
+  focus:
+    zh: 推荐咖啡店环境音、图书馆环境、轻度背景音
+    en: 'Recommended: coffee shop ambience, library ambience, light background sounds'
+  meditation:
+    zh: 推荐颂钵、冥想钟声、寺庙钟声
+    en: 'Recommended: singing bowls, meditation bell, temple bells'
