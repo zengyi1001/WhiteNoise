@@ -1,0 +1,52 @@
+# 音效组合配置 - 咖啡馆的早晨
+# 模拟咖啡馆的温馨氛围
+
+name: 咖啡馆的早晨
+description: 咖啡馆轻松的早晨，人声、咖啡香气与舒缓的时光
+duration: 600  # 总时长（秒）
+
+tracks:
+  # 咖啡店背景音 - 贯穿全程
+  - audio: coffeeshopchatter-51190.mp3
+    start: 0
+    end: 600
+    volume: 0.4
+    fade_in: 5
+    fade_out: 10
+    loop: true
+    
+  # 书店安静氛围 - 降低热闹感
+  - audio: bookstore-ambience-236734.mp3
+    start: 60
+    end: 540
+    volume: 0.25
+    fade_in: 20
+    fade_out: 20
+    loop: true
+    
+  # 时钟滴答声 - 增加时间流逝感
+  - audio: quartz-kitchen-clock-ticking-60-seconds-253100.mp3
+    start: 120
+    end: 480
+    volume: 0.15
+    fade_in: 10
+    fade_out: 10
+    loop: true
+    
+  # 窗外小雨 - 中段加入
+  - audio: light-rain-ambient-114354.mp3
+    start: 180
+    end: 450
+    volume: 0.2
+    fade_in: 30
+    fade_out: 30
+    loop: true
+    
+  # 早餐声音 - 开场
+  - audio: breakfast-sounds-59929.mp3
+    start: 0
+    end: 120
+    volume: 0.3
+    fade_in: 0
+    fade_out: 15
+    loop: false

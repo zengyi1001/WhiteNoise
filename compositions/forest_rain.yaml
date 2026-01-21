@@ -1,0 +1,61 @@
+# 音效组合配置 - 森林雨夜
+# 描述了一个5分钟的音效交响乐
+
+name: 森林雨夜
+description: 雨声渐起，鸟鸣相伴，雷声点缀的森林夜晚
+duration: 300  # 总时长（秒）
+
+tracks:
+  # 背景雨声 - 贯穿全程，音量较低
+  - audio: soft-rain-ambient-111154.mp3
+    start: 0
+    end: 300
+    volume: 0.5
+    fade_in: 10
+    fade_out: 15
+    loop: true
+    
+  # 森林环境音 - 中段加入
+  - audio: forest-ambience-296528.mp3
+    start: 30
+    end: 270
+    volume: 0.35
+    fade_in: 15
+    fade_out: 15
+    loop: true
+    
+  # 鸟鸣声 - 前半段
+  - audio: birds-forest-nature-445379.mp3
+    start: 45
+    end: 180
+    volume: 0.25
+    fade_in: 10
+    fade_out: 20
+    loop: true
+    
+  # 雷声 - 间歇出现，增加氛围
+  - audio: dry-thunder-364468.mp3
+    start: 90
+    end: 110
+    volume: 0.4
+    fade_in: 2
+    fade_out: 5
+    loop: false
+    
+  # 第二次雷声
+  - audio: rain-and-thunder-16705.mp3
+    start: 180
+    end: 220
+    volume: 0.35
+    fade_in: 5
+    fade_out: 10
+    loop: false
+    
+  # 蟋蟀声 - 后半段，增加夜晚感
+  - audio: night-cricket-ambience-22484.mp3
+    start: 200
+    end: 300
+    volume: 0.3
+    fade_in: 20
+    fade_out: 10
+    loop: true

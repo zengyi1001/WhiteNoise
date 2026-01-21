@@ -1,0 +1,52 @@
+# 音效组合配置 - 海边冥想
+# 舒缓的海浪声配合冥想音乐
+
+name: 海边冥想
+description: 宁静的海边，海浪轻拍，适合冥想和放松
+duration: 480  # 总时长（秒）
+
+tracks:
+  # 海浪声 - 主背景
+  - audio: soothing-ocean-waves-372489.mp3
+    start: 0
+    end: 480
+    volume: 0.55
+    fade_in: 15
+    fade_out: 20
+    loop: true
+    
+  # 冥想颂钵 - 贯穿
+  - audio: meditation-bowls-23651.mp3
+    start: 30
+    end: 450
+    volume: 0.3
+    fade_in: 20
+    fade_out: 20
+    loop: true
+    
+  # 溪流声 - 中段
+  - audio: water-stream-108384.mp3
+    start: 120
+    end: 360
+    volume: 0.2
+    fade_in: 30
+    fade_out: 30
+    loop: true
+    
+  # 风声 - 轻柔
+  - audio: wind-blowing-457954.mp3
+    start: 60
+    end: 420
+    volume: 0.15
+    fade_in: 20
+    fade_out: 20
+    loop: true
+    
+  # 鸟鸣 - 点缀
+  - audio: birds-near-waterfall-324855.mp3
+    start: 180
+    end: 300
+    volume: 0.2
+    fade_in: 15
+    fade_out: 15
+    loop: true

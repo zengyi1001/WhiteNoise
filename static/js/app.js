@@ -12,6 +12,16 @@ class WhiteNoiseMixer {
         this.isPlaying = false;
         this.soundsData = null;
         
+        // 组合播放相关
+        this.compositions = [];
+        this.currentComposition = null;
+        this.compositionSources = [];
+        this.compositionBuffers = new Map();
+        this.compositionPlaying = false;
+        this.compositionStartTime = 0;
+        this.compositionPauseTime = 0;
+        this.compositionUpdateInterval = null;
+        
         // 分类图标映射
         this.categoryIcons = {
             rain_sounds: '🌧️',
@@ -30,7 +40,11 @@ class WhiteNoiseMixer {
     }
     
     async init() {
-        await this.loadSoundsData();
+        await Promise.all([
+            this.loadSoundsData(),
+            this.loadCompositions()
+        ]);
+        this.renderCompositionsShowcase();
         this.renderCategories();
         this.renderSounds();
         this.bindEvents();
@@ -55,6 +69,61 @@ class WhiteNoiseMixer {
         } catch (error) {
             console.error('加载音效数据失败:', error);
         }
+    }
+    
+    async loadCompositions() {
+        try {
+            const response = await fetch('/api/compositions');
+            const result = await response.json();
+            if (result.success) {
+                this.compositions = result.data;
+            }
+        } catch (error) {
+            console.error('加载组合列表失败:', error);
+        }
+    }
+    
+    renderCompositionsShowcase() {
+        const container = document.getElementById('showcaseGrid');
+        if (!container || this.compositions.length === 0) {
+            const section = document.getElementById('compositionsShowcase');
+            if (section) section.style.display = 'none';
+            return;
+        }
+        
+        let html = '';
+        for (const comp of this.compositions) {
+            const durationMin = Math.floor(comp.duration / 60);
+            const isPlaying = this.currentComposition?.id === comp.id && this.compositionPlaying;
+            
+            html += `
+                <div class="comp-card ${isPlaying ? 'playing' : ''}" data-comp-id="${comp.id}">
+                    <div class="comp-card-inner">
+                        <div class="comp-header">
+                            <span class="comp-title">${comp.name}</span>
+                            <span class="comp-duration">${durationMin}分钟</span>
+                        </div>
+                        <p class="comp-desc">${comp.description || '精选音效组合'}</p>
+                        <div class="comp-tracks-preview">
+                            ${this.getTrackPreviewTags(comp)}
+                        </div>
+                    </div>
+                    <div class="comp-play-overlay">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            ${isPlaying ? '<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>' : '<path d="M8 5v14l11-7z"/>'}
+                        </svg>
+                    </div>
+                </div>
+            `;
+        }
+        
+        container.innerHTML = html;
+    }
+    
+    getTrackPreviewTags(comp) {
+        // 从组合中提取一些音轨名称作为预览标签
+        const trackCount = comp.track_count || 0;
+        return `<span class="comp-track-tag">🎵 ${trackCount} 个音轨</span>`;
     }
     
     renderCategories() {
@@ -134,6 +203,44 @@ class WhiteNoiseMixer {
         document.getElementById('btnClear').addEventListener('click', () => {
             this.clearAll();
         });
+        
+        // 组合卡片点击
+        const showcaseGrid = document.getElementById('showcaseGrid');
+        if (showcaseGrid) {
+            showcaseGrid.addEventListener('click', (e) => {
+                const card = e.target.closest('.comp-card');
+                if (card) {
+                    const compId = card.dataset.compId;
+                    this.toggleComposition(compId);
+                }
+            });
+        }
+        
+        // 组合播放器控制按钮
+        const cpmPlayPause = document.getElementById('cpmPlayPause');
+        if (cpmPlayPause) {
+            cpmPlayPause.addEventListener('click', () => {
+                this.toggleCompositionPlay();
+            });
+        }
+        
+        const cpmStop = document.getElementById('cpmStop');
+        if (cpmStop) {
+            cpmStop.addEventListener('click', () => {
+                this.stopComposition();
+            });
+        }
+        
+        // 组合进度条点击
+        const cpmProgress = document.getElementById('cpmProgress');
+        if (cpmProgress) {
+            cpmProgress.addEventListener('click', (e) => {
+                if (!this.currentComposition) return;
+                const rect = cpmProgress.getBoundingClientRect();
+                const percent = (e.clientX - rect.left) / rect.width;
+                this.seekComposition(percent * this.currentComposition.duration);
+            });
+        }
     }
     
     initAudioContext() {
@@ -330,6 +437,319 @@ class WhiteNoiseMixer {
         for (const filename of this.activeTracks.keys()) {
             this.removeTrack(filename);
         }
+    }
+    
+    // =============== 组合播放功能 ===============
+    
+    async toggleComposition(compId) {
+        // 如果点击的是当前正在播放的组合，则停止
+        if (this.currentComposition?.id === compId && this.compositionPlaying) {
+            this.stopComposition();
+            return;
+        }
+        
+        // 停止当前组合（如果有）
+        if (this.currentComposition) {
+            this.stopComposition();
+        }
+        
+        // 加载并播放新组合
+        await this.loadAndPlayComposition(compId);
+    }
+    
+    async loadAndPlayComposition(compId) {
+        try {
+            const response = await fetch(`/api/compositions/${compId}`);
+            const result = await response.json();
+            
+            if (!result.success) {
+                console.error('加载组合失败:', result.error);
+                return;
+            }
+            
+            this.currentComposition = result.data;
+            
+            // 显示迷你播放器
+            this.showCompositionPlayer();
+            
+            // 预加载音频
+            await this.preloadCompositionAudio();
+            
+            // 开始播放
+            this.playComposition();
+            
+        } catch (error) {
+            console.error('加载组合失败:', error);
+        }
+    }
+    
+    async preloadCompositionAudio() {
+        this.initAudioContext();
+        
+        const tracks = this.currentComposition.tracks;
+        const loadPromises = [];
+        
+        for (const track of tracks) {
+            if (!this.compositionBuffers.has(track.audio)) {
+                loadPromises.push(this.loadCompositionAudio(track.audio));
+            }
+        }
+        
+        await Promise.all(loadPromises);
+    }
+    
+    async loadCompositionAudio(filename) {
+        try {
+            const response = await fetch(`/audio/${filename}`);
+            const arrayBuffer = await response.arrayBuffer();
+            const audioBuffer = await this.audioContext.decodeAudioData(arrayBuffer);
+            this.compositionBuffers.set(filename, audioBuffer);
+            return audioBuffer;
+        } catch (error) {
+            console.error(`加载音频失败: ${filename}`, error);
+            return null;
+        }
+    }
+    
+    showCompositionPlayer() {
+        const player = document.getElementById('compositionPlayerMini');
+        const comp = this.currentComposition;
+        
+        document.getElementById('cpmTitle').textContent = comp.name;
+        document.getElementById('cpmTotal').textContent = this.formatTime(comp.duration);
+        document.getElementById('cpmCurrent').textContent = '0:00';
+        document.getElementById('cpmProgressFill').style.width = '0%';
+        
+        // 渲染音轨标签
+        this.renderCompositionTracks();
+        
+        player.style.display = 'block';
+        
+        // 更新组合卡片状态
+        this.renderCompositionsShowcase();
+    }
+    
+    renderCompositionTracks() {
+        const container = document.getElementById('cpmTracks');
+        const tracks = this.currentComposition.tracks;
+        
+        let html = '';
+        for (const track of tracks) {
+            const label = track.audio_info?.description_zh || track.audio.split('.')[0].slice(0, 8);
+            html += `<span class="cpm-track" data-audio="${track.audio}">${label}</span>`;
+        }
+        
+        container.innerHTML = html;
+    }
+    
+    playComposition() {
+        if (!this.currentComposition) return;
+        
+        this.initAudioContext();
+        this.stopCompositionSources();
+        
+        const comp = this.currentComposition;
+        const currentTime = this.audioContext.currentTime;
+        const offset = this.compositionPauseTime;
+        
+        this.compositionStartTime = currentTime - offset;
+        
+        // 为每个音轨创建音源
+        for (const track of comp.tracks) {
+            const buffer = this.compositionBuffers.get(track.audio);
+            if (!buffer) continue;
+            
+            const trackStart = track.start;
+            const trackEnd = track.end;
+            const trackDuration = trackEnd - trackStart;
+            
+            if (offset >= trackEnd) continue;
+            
+            const source = this.audioContext.createBufferSource();
+            const gainNode = this.audioContext.createGain();
+            
+            source.buffer = buffer;
+            source.loop = track.loop !== false;
+            
+            gainNode.gain.value = track.volume || 1;
+            
+            source.connect(gainNode);
+            gainNode.connect(this.masterGain);
+            
+            let when = currentTime;
+            let startOffset = 0;
+            let duration = trackDuration;
+            
+            if (offset < trackStart) {
+                when = currentTime + (trackStart - offset);
+            } else if (offset < trackEnd) {
+                const elapsed = offset - trackStart;
+                if (track.loop !== false) {
+                    startOffset = elapsed % buffer.duration;
+                } else {
+                    startOffset = Math.min(elapsed, buffer.duration);
+                }
+                duration = trackEnd - offset;
+            }
+            
+            // 淡入淡出
+            if (track.fade_in > 0 && offset <= trackStart) {
+                gainNode.gain.setValueAtTime(0, when);
+                gainNode.gain.linearRampToValueAtTime(track.volume || 1, when + track.fade_in);
+            }
+            
+            if (track.fade_out > 0) {
+                const fadeOutStart = when + duration - track.fade_out;
+                if (fadeOutStart > currentTime) {
+                    gainNode.gain.setValueAtTime(track.volume || 1, fadeOutStart);
+                    gainNode.gain.linearRampToValueAtTime(0, when + duration);
+                }
+            }
+            
+            this.compositionSources.push({ source, gainNode, track, when, duration });
+            
+            if (track.loop !== false && duration > buffer.duration) {
+                source.start(when, startOffset);
+                source.stop(when + duration);
+            } else {
+                source.start(when, startOffset, duration);
+            }
+        }
+        
+        this.compositionPlaying = true;
+        this.updateCompositionPlayButton();
+        this.startCompositionProgress();
+        this.renderCompositionsShowcase();
+    }
+    
+    pauseComposition() {
+        if (!this.compositionPlaying) return;
+        
+        this.compositionPauseTime = this.audioContext.currentTime - this.compositionStartTime;
+        this.stopCompositionSources();
+        this.compositionPlaying = false;
+        this.updateCompositionPlayButton();
+        this.stopCompositionProgress();
+        this.renderCompositionsShowcase();
+    }
+    
+    toggleCompositionPlay() {
+        if (this.compositionPlaying) {
+            this.pauseComposition();
+        } else {
+            this.playComposition();
+        }
+    }
+    
+    stopComposition() {
+        this.stopCompositionSources();
+        this.compositionPlaying = false;
+        this.compositionPauseTime = 0;
+        this.currentComposition = null;
+        this.updateCompositionPlayButton();
+        this.stopCompositionProgress();
+        
+        const player = document.getElementById('compositionPlayerMini');
+        if (player) player.style.display = 'none';
+        
+        this.renderCompositionsShowcase();
+    }
+    
+    seekComposition(time) {
+        if (!this.currentComposition) return;
+        
+        time = Math.max(0, Math.min(time, this.currentComposition.duration));
+        this.compositionPauseTime = time;
+        
+        if (this.compositionPlaying) {
+            this.stopCompositionSources();
+            this.playComposition();
+        } else {
+            this.updateCompositionProgress(time);
+        }
+    }
+    
+    stopCompositionSources() {
+        for (const item of this.compositionSources) {
+            try {
+                item.source.stop();
+                item.source.disconnect();
+                item.gainNode.disconnect();
+            } catch (e) {}
+        }
+        this.compositionSources = [];
+    }
+    
+    updateCompositionPlayButton() {
+        const iconPlay = document.querySelector('#cpmPlayPause .icon-play');
+        const iconPause = document.querySelector('#cpmPlayPause .icon-pause');
+        
+        if (iconPlay && iconPause) {
+            if (this.compositionPlaying) {
+                iconPlay.style.display = 'none';
+                iconPause.style.display = 'block';
+            } else {
+                iconPlay.style.display = 'block';
+                iconPause.style.display = 'none';
+            }
+        }
+    }
+    
+    startCompositionProgress() {
+        this.stopCompositionProgress();
+        this.compositionUpdateInterval = setInterval(() => {
+            if (!this.compositionPlaying || !this.currentComposition) return;
+            
+            const currentTime = this.audioContext.currentTime - this.compositionStartTime;
+            
+            if (currentTime >= this.currentComposition.duration) {
+                this.stopComposition();
+                return;
+            }
+            
+            this.updateCompositionProgress(currentTime);
+        }, 100);
+    }
+    
+    stopCompositionProgress() {
+        if (this.compositionUpdateInterval) {
+            clearInterval(this.compositionUpdateInterval);
+            this.compositionUpdateInterval = null;
+        }
+    }
+    
+    updateCompositionProgress(currentTime) {
+        if (!this.currentComposition) return;
+        
+        const percent = (currentTime / this.currentComposition.duration) * 100;
+        
+        document.getElementById('cpmCurrent').textContent = this.formatTime(currentTime);
+        document.getElementById('cpmProgressFill').style.width = `${percent}%`;
+        
+        // 更新当前播放的音轨高亮
+        this.updateActiveCompositionTracks(currentTime);
+    }
+    
+    updateActiveCompositionTracks(currentTime) {
+        const tracks = this.currentComposition?.tracks || [];
+        
+        document.querySelectorAll('.cpm-track').forEach(el => {
+            el.classList.remove('active');
+        });
+        
+        for (const track of tracks) {
+            if (currentTime >= track.start && currentTime < track.end) {
+                const el = document.querySelector(`.cpm-track[data-audio="${track.audio}"]`);
+                if (el) el.classList.add('active');
+            }
+        }
+    }
+    
+    formatTime(seconds) {
+        seconds = Math.floor(seconds);
+        const mins = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
     }
 }
 

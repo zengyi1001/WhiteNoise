@@ -428,3 +428,310 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--text-secondary);
 }
+
+/* =============== 精选组合区域 =============== */
+.compositions-showcase {
+    margin-bottom: 2.5rem;
+}
+
+.showcase-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.showcase-title {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.showcase-desc {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+/* 组合卡片 */
+.comp-card {
+    background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-secondary) 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.comp-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--accent-soft) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.comp-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px var(--shadow);
+    border-color: var(--accent);
+}
+
+.comp-card:hover::before {
+    opacity: 1;
+}
+
+.comp-card.playing {
+    border-color: var(--accent);
+    background: linear-gradient(135deg, var(--bg-active) 0%, var(--bg-card) 100%);
+}
+
+.comp-card.playing::before {
+    opacity: 1;
+}
+
+.comp-card-inner {
+    position: relative;
+    z-index: 1;
+}
+
+.comp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+}
+
+.comp-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.comp-duration {
+    font-size: 0.75rem;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 0.2rem 0.5rem;
+    border-radius: 1rem;
+}
+
+.comp-desc {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.comp-tracks-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.comp-track-tag {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    background: var(--bg-hover);
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.comp-play-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    opacity: 0;
+    transition: var(--transition);
+    z-index: 2;
+}
+
+.comp-card:hover .comp-play-overlay {
+    opacity: 1;
+}
+
+.comp-card.playing .comp-play-overlay {
+    opacity: 1;
+    background: #ff6b6b;
+}
+
+/* 分割线 */
+.section-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+.section-divider::before,
+.section-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    max-width: 100px;
+}
+
+.section-divider span {
+    padding: 0 1rem;
+}
+
+/* =============== 嵌入式组合播放器 =============== */
+.composition-player-mini {
+    background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cpm-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.cpm-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.cpm-icon {
+    font-size: 1.5rem;
+}
+
+.cpm-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.cpm-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.cpm-time {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-variant-numeric: tabular-nums;
+}
+
+.cpm-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.cpm-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--bg-hover);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.cpm-btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+.cpm-progress {
+    height: 4px;
+    background: var(--bg-hover);
+    border-radius: 2px;
+    margin-bottom: 0.75rem;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.cpm-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent) 0%, #7eb8ff 100%);
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+.cpm-tracks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.cpm-track {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 1rem;
+    background: var(--bg-hover);
+    color: var(--text-muted);
+    transition: var(--transition);
+}
+
+.cpm-track.active {
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+    .showcase-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .comp-card {
+        padding: 1rem;
+    }
+    
+    .composition-player-mini {
+        padding: 0.75rem 1rem;
+    }
+    
+    .cpm-title {
+        font-size: 0.85rem;
+    }
+}

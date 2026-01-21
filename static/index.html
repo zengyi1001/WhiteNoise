@@ -14,6 +14,22 @@
             <p class="tagline">沉浸 · 专注 · 放松</p>
         </header>
 
+        <!-- 精选组合区域 -->
+        <section class="compositions-showcase" id="compositionsShowcase">
+            <div class="showcase-header">
+                <h2 class="showcase-title">🎼 精选组合</h2>
+                <p class="showcase-desc">预设的音效交响乐，点击即可播放</p>
+            </div>
+            <div class="showcase-grid" id="showcaseGrid">
+                <!-- 动态生成 -->
+            </div>
+        </section>
+
+        <!-- 分割线 -->
+        <div class="section-divider">
+            <span>自由混音</span>
+        </div>
+
         <!-- 分类导航 -->
         <nav class="categories" id="categories">
             <!-- 动态生成 -->
@@ -23,6 +39,40 @@
         <main class="sounds-grid" id="soundsGrid">
             <!-- 动态生成 -->
         </main>
+
+        <!-- 组合播放器（嵌入式） -->
+        <div class="composition-player-mini" id="compositionPlayerMini" style="display: none;">
+            <div class="cpm-header">
+                <div class="cpm-info">
+                    <span class="cpm-icon">🎼</span>
+                    <div class="cpm-text">
+                        <span class="cpm-title" id="cpmTitle">-</span>
+                        <span class="cpm-time"><span id="cpmCurrent">0:00</span> / <span id="cpmTotal">0:00</span></span>
+                    </div>
+                </div>
+                <div class="cpm-controls">
+                    <button class="cpm-btn" id="cpmPlayPause" title="播放/暂停">
+                        <svg class="icon-play" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                        <svg class="icon-pause" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="display:none">
+                            <path d="M6 4h4v16H6zM14 4h4v16h-4z"/>
+                        </svg>
+                    </button>
+                    <button class="cpm-btn" id="cpmStop" title="停止">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <rect x="6" y="6" width="12" height="12"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="cpm-progress" id="cpmProgress">
+                <div class="cpm-progress-fill" id="cpmProgressFill"></div>
+            </div>
+            <div class="cpm-tracks" id="cpmTracks">
+                <!-- 当前播放的音轨指示 -->
+            </div>
+        </div>
 
         <!-- 混音面板 -->
         <section class="mixer-panel" id="mixerPanel">
